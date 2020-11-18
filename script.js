@@ -27,3 +27,38 @@
 // 4. Function that advances to next question after the prior one is submitted.
 // 5. Function that tracks and displays score throughout the game.
 // 6. Event listener that knows when the last question is reached, or the timer reaches zero, and displays the final score with an option for the player to enter in their initials. 
+
+// Event Listener for "Begin Quiz"
+
+
+
+// The array of questions for our Coding Quiz.
+var questions = [
+  { q: "HTML is the basic programming language of the web.", a: "t" },
+  { q: "CSS stands for 'Cascading Standard System.'", a: "f" },
+  { q: "There are 9 basic data types in JavaScript.", a: "f" },
+  { q: "The 'typeof' operator allows us to see which type is stored in a variable.", a: "t" },
+  { q: "The fact that typeof(null) returns 'object' is an error in the JavaScript language.", a: "t" }
+];
+// We start the game with a score of 0
+var score = 0;
+
+// Loop over every question object
+for (var i = 0; i < questions.length; i++) {
+  // Display current question to user and ask OK/Cancel
+  var answer = confirm(questions[i].q);
+
+  // Compare answers
+  if ((answer === true && questions[i].a === "t") ||
+  (answer === false && questions[i].a === "f")) {
+    // Increase score
+    score++;
+    alert("Correct!");
+  } else {
+    alert("Incorrect!");
+  }
+};
+
+// Show total at end
+alert(`You got ${score} out of ${questions.length} questions correct!`);
+
