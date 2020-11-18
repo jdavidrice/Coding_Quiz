@@ -1,0 +1,67 @@
+## Coding Quiz
+
+## Description 
+
+This website is a timed coding quiz with multiple-choice questions. It runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript. 
+
+[Link to published website]()
+
+## Table of Contents
+
+* [Description](#Description)
+* [Table of Contents](#Table-of-Contents)
+* [Photo](#Photo)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [Credits](#Credits)
+* [License](#License)
+* [Badges](#Badges)
+* [Contributing](#Contributing)
+* [Tests](#Tests)
+
+## Photo
+
+![Screenshot of completed website.]()
+
+* [Return to Top](#Coding-Quiz)
+
+## Installation
+
+There is nothing to install to access the information on this website. 
+
+* [Return to Top](#Coding-Quiz)
+
+## Usage 
+
+
+* [Return to Top](#Coding-Quiz)
+
+## Credits
+
+No credits
+
+* [Return to Top](#Coding-Quiz)
+
+## License
+
+No licenses used or implied 
+
+* [Return to Top](#Coding-Quiz)
+
+## Badges
+
+No badges 
+
+* [Return to Top](#Coding-Quiz)
+
+## Contributing
+
+Jeremy Rice
+
+* [Return to Top](#Coding-Quiz)
+
+## Tests
+
+No tests
+
+* [Return to Top](#Coding-Quiz)
