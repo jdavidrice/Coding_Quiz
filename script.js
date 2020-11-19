@@ -31,26 +31,35 @@
 
 let startQuiz = document.getElementById("startQuiz");
 let score = 0;
+let newElement = document.createElement('div');
+document.body.appendChild(newElement);
+console.log(newElement);
 
 // Event Listener for "Start Quiz"
 startQuiz.addEventListener("click", function () {
-  // The array of questions.
+// The array of questions.
 var questions = [
-  { q: "HTML is the basic programming language of the web.", a: "t" },
-  { q: "CSS stands for 'Cascading Standard System.'", a: "f" },
-  { q: "There are 9 basic data types in JavaScript.", a: "f" },
-  { q: "The 'typeof' operator allows us to see which type is stored in a variable.", a: "t" },
-  { q: "The fact that typeof(null) returns 'object' is an error in the JavaScript language.", a: "t" }
+  { q: "What is the basic programming language of the web?\n(a) HTML\n(b) Java\n(c) Angular\n(d) fordFocus", a: "a" },
+  { q: "What does CSS stand for?\n(a) Cascading Standard System\n(b) Colloquial Semantic Structure\n(c) Cascading Style Sheets\n(d) Clesper Sacramento Syllogism", 
+  a: "c" },
+  { q: "How many basic data types are there in JavaScript?\n(a) 6\n(b) 7\n(c) 8\n(d) 9", 
+  a: "d" },
+  { q: "What operator allows us to see which type is stored in a variable?\n(a) const\n(b) typeof\n(c) tele\n(d) fordFocus", 
+  a: "b" },
+  { q: "In JavaScript, the fact that typeof(null) returns 'object' is an example of what?\n(a) a feature\n(b) a dependency\n(c) a bug\n(d) an autombile made by the Ford Motor Company between the years of 1999 and 2018 (in North America)", 
+  a: "c" },
 ];
 
 // Loop over every question object
 for (var i = 0; i < questions.length; i++) {
   // Display current question to user and ask OK/Cancel
-  var answer = confirm(questions[i].q);
+  var answer = prompt(questions[i].q);
 
   // Compare answers
-  if ((answer === true && questions[i].a === "t") ||
-  (answer === false && questions[i].a === "f")) {
+  if ((answer === "a" && questions[i].a === "a") ||
+  (answer === "b" && questions[i].a === "b") ||
+  (answer === "c" && questions[i].a === "c") ||
+  (answer === "d" && questions[i].a === "d")) {
     // Increase score
     score++;
     alert("Correct!");
