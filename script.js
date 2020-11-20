@@ -134,7 +134,9 @@ let questions = [
   // Set Score
   getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+      // Save score to local storage
       localStorage.setItem('mostRecentScore', score)
+      // Send to end.html when game is over
       return window.location.assign('/end.html')
     }
 
