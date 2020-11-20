@@ -1,8 +1,30 @@
-/* Basic HTML Elements */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 110%;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background-color: rgb(71, 71, 71);
+  color: whitesmoke;
+}
+
 .container {
-  display: flex;
-  flex-flow: column wrap;
+  display: flex-flow;
+  flex-flow: column;
+  justify-content: center;
   align-items: center;
+  margin:0 auto;
+  width: 100vw;
+  max-width: 80rem;
+  height: 100vh;
+  max-height: 80rem;
+  padding: 2rem;
+
 }
 
 .item {
@@ -12,11 +34,34 @@
   margin-bottom: 50px;
 }
 
-.button {
+.btn {
   justify-content: center;
   background-color: blue;
+  border-radius: 4px;
+  color: whitesmoke;
   font-weight: bold;
   font-size: 3rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(6, 6, 75, 0.5);
+  transition: transform 100ms;
+  transform: scale(1.03);
+}
+
+.hidden {
+  display: none;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 
 }
 
+.fa-rocket {
+  font-size: 2.5rem;
+  margin-left: 1rem;
+}
