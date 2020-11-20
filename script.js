@@ -40,17 +40,7 @@
 //   event.preventDefault();
 
 // //The array of questions.
-// var questions = [
-//   { q: "What is the basic programming language of the web?\n(a) HTML\n(b) Java\n(c) Angular\n(d) fordFocus", a: "a" },
-//   { q: "What does CSS stand for?\n(a) Cascading Standard System\n(b) Colloquial Semantic Structure\n(c) Cascading Style Sheets\n(d) Clesper Sacramento Syllogism", 
-//   a: "c" },
-//   { q: "How many basic data types are there in JavaScript?\n(a) 6\n(b) 7\n(c) 8\n(d) 9", 
-//   a: "d" },
-//   { q: "What operator allows us to see which type is stored in a variable?\n(a) const\n(b) typeof\n(c) tele\n(d) fordFocus", 
-//   a: "b" },
-//   { q: "In JavaScript, the fact that typeof(null) returns 'object' is an example of what?\n(a) a feature\n(b) a dependency\n(c) a bug\n(d) an autombile made by the Ford Motor Company between the years of 1999 and 2018 (in North America)", 
-//   a: "c" },
-// ];
+// 
 
 // // Loop over every question object
 // for (var i = 0; i < questions.length; i++) {
@@ -73,6 +63,137 @@
 // alert(`You got ${score} out of ${questions.length} questions correct.`);
 // });
 
+// DOM Elements
+const question = document.querySelector('#question')
+const choices = Array.from(document.querySelectorAll('.choice-text'))
+const progressText = document.querySelector('#progressText')
+const scoreText = document.querySelector('#score')
+const progressBarFull = document.querySelector('#progressBarFull')
 
+// Variables
+let currentQuestion = {}
+let acceptingAnswers = true
+let score = 0
+let questionCounter = 0
+let availableQuestions = []
 
+// The array of questions
+let questions = [
+    { 
+      question: 'What is the basic programming language of the web?',
+      choice1: 'HTML',
+      choice2: 'Java',
+      choice3: 'Angular',
+      choice4: 'fordFocus',
+      answer: 1,
+    },
+    { 
+      question: 'What does CSS stand for?',
+      choice1: 'Cascading Standard System',
+      choice2: 'Colloquial Semantic Structure',
+      choice3: 'Cascading Style Sheets',
+      choice4: 'Clesper Sacramento Syllogism',
+      answer: 3,
+    },
+    { 
+      question: 'How many basic data types are there in JavaScript?',
+      choice1: '6',
+      choice2: '7',
+      choice3: '8',
+      choice4: '9',
+      answer: 4,
+    },
+    { 
+      question: 'What operator allows us to see which type is stored in a variable?',
+      choice1: 'const',
+      choice2: 'typeof',
+      choice3: 'tele',
+      choice4: 'fordFocus',
+      answer: 2,
+    },
+    { 
+      question: 'In JavaScript, the fact that typeof(null) returns "object" is an example of what?',
+      choice1: 'a feature',
+      choice2: 'a dependency',
+      choice3: 'a bug',
+      choice4: 'an autombile made by the Ford Motor Company between the years of 1999 and 2018 (in North America)',
+      answer: 3,
+    },
+  ]
+
+  const SCORE_POINTS = 10
+  const MAX_QUESTIONS = 5
+
+  startGame = () => {
+    questionCounter = 0
+    score = 0
+    availableQuestions = [...questions]
+    getNewQuestion()
+  }
+
+  // Set Score
+  getNewQuestion = () => {
+    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+      localStorage.setItem('mostRecentScore', score)
+      return window.location.assign('/end.html')
+    }
+
+    // Adjust Progress Bar
+    questionCounter++
+    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
+    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
+
+    // Randomize question order
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+
+    // Keep track of what question is being asked, and display it
+    currentQuestion = availableQuestions[questionsIndex]
+    question.innerText = currentQuestion.question
+
+    // Keep track of what answer is chosen 
+    choices.forEach(choice => {
+      const number = choice.dataset['number']
+      choice.innerText = currentQuestion['choice' + number]
+    })
+
+    // Adjusts the array as each question is used
+    availableQuestions.splice(questionsIndex, 1)
+
+    acceptingAnswers = true
+  }
+
+  // Event listener for answer buttons
+  choices.forEach(choice => {
+    choice.addEventListener('click', e => {
+      if(!acceptingAnswers) return
+      
+      acceptingAnswers = false
+      const selectedChoice = e.target
+      const selectedAnswer = selectedChoice.dataset['number']
+
+      // Apply style to button to indicate correct or incorrect
+      let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
+
+      // Each correct answer gives you 10 points
+      if(classToApply === 'correct') {
+        incrementScore(SCORE_POINTS)
+      }
+
+      selectedChoice.parentElement.classList.add(classToApply)
+
+      // Pause to show us if we got the answer correct or incorrect
+      setTimeout(() => {
+        selectedChoice.parentElement.classList.remove(classToApply)
+        getNewQuestion()
+
+      }, 1000)
+    })
+  })
+
+  incrementScore = num => {
+    score +=num
+    scoreText.innerText = score
+  }
+
+  startGame()
 
