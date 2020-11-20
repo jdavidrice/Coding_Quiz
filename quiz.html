@@ -6,13 +6,14 @@
 
   <!-- Additional CSS -->
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" type="text/css" href="game.css">
+  <link rel="stylesheet" type="text/css" href="quiz.css">
+  <link rel="stylesheet" type="text/css" href="timer.css">
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a3ac08f2c5.js" crossorigin="anonymous"></script>
 
   <!-- Page Title -->
-  <title>Coding Quiz Page 2</title>
+  <title>Coding Quiz</title>
 </head>
 <body>
   <div class="container">
@@ -22,10 +23,10 @@
           <p id="progressText" class="hud-prefix">
             Question
           </p>
-          <div id="progressBar">
-            <div id="progressBarFull"></div>
-          </div>
         </div>
+        <!-- Timer Start -->
+        <div id="app" class="item"></div>
+        <!-- Timer End-->
         <div class="hud-item">
           <p class="hud-prefix">
             Score
@@ -60,6 +61,7 @@
   </div>
 
   <!-- Link to JS file -->
-  <script src="script.js"></script>
+  <script src="quiz.js"></script>
+  <!-- <script src="timer.js"></script> -->
   </body>
 </html>
