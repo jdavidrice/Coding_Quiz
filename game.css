@@ -1,0 +1,21 @@
+body {
+  background-color: darkgray;
+  color: whitesmoke;
+}
+
+.choice.container {
+  display: flex;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  border-radius: 4px;
+  background: blue;
+  font-size: 3rem;
+  min-width: 80rem;
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 blue;
+  transform: scale(1.02);
+  transform: transform 100ms;
+}

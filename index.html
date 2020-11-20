@@ -17,7 +17,7 @@
   <title>Coding Quiz</title>
 </head>
   <body>
-    <container>
+    <div class="container">
       <!-- Start Header -->
       <header class="item">
         <h1>Coding Quiz - Test your knowledge of HTML, CSS, and JavaScript!</h1>
@@ -26,14 +26,15 @@
       <!-- Start Main Content -->
       <content class="item">
         <h2>Instructions</h2>
-          <p>Are you ready to test your coding knowledge? When you are ready, click on "Begin Quiz," then choose your answer. Be sure to click on "Submit Answer" after you have chosen. Be careful! You will have time removed from the clock for each incorrect response.</p>
-        <div class="item">
-          
-        </div>
-        <div class="item"><button id="startQuiz" class="flex bg-blue-500 rounded text-white capitalize font-bold px-3 py-2 mx-auto btn-primary">
-        Start Quiz
-        </button>
-      </div>
+          <p>Are you ready to test your coding knowledge? When you are ready, click on "Begin Quiz," then do your best to answer each question correctly within the time alloted. Be sure to click on "Submit Answer" after you have chosen. Be careful! Once I add in a timer, you will have time removed from the clock for each incorrect response.</p>
+          <div class="item">
+            <h4 id="quizQuestions"></h4>
+          </div>
+          <div class="container">
+            <div id="home" class="flex-column flex-center">
+              <a href="/game.html" class="flex bg-blue-500 rounded text-white capitalize font-bold px-5 py-4 mx-auto btn-primary"><h1>Start Quiz</h1></a>
+            </div>
+          </div>
       </content>
       <!-- End Main Content -->
       <!-- Start Footer -->
@@ -41,7 +42,7 @@
         <p>&copy; Copyright 2020 Jeremy Rice</p>
       </footer>
       <!-- End Footer -->
-    </container>
+    </div>
   <!-- End Main Content -->
   <!-- jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
