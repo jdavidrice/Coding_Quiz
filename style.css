@@ -14,5 +14,9 @@
 
 .button {
   justify-content: center;
+  background-color: blue;
+  font-weight: bold;
+  font-size: 3rem;
+
 }
 

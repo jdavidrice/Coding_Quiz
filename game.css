@@ -1,9 +1,9 @@
 body {
-  background-color: darkgray;
+  background-color: rgb(71, 71, 71);
   color: whitesmoke;
 }
 
-.choice.container {
+.choice-container {
   display: flex;
   margin-bottom: 0.8rem;
   width: 100%;
