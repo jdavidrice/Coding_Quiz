@@ -137,7 +137,7 @@ let questions = [
       // Save score to local storage
       localStorage.setItem('mostRecentScore', score)
       // Send to end.html when game is over
-      return window.location.assign('/end.html')
+      return window.location.assign('end.html')
     }
 
     // Adjust Progress Bar
@@ -181,9 +181,11 @@ let questions = [
         incrementScore(SCORE_POINTS)
       }
 
-      // Each incorrect answer takes 5 seconds off the timer
-      if(classToApply === 'incorrect') {
+      // Each incorrect answer takes 5 seconds off the timer, unless the time remaining is less than 5 seconds, at which time the game ends
+      if(classToApply === 'incorrect' && timeLeft > 5) {
         timePassed = timePassed += 5;
+      } else if (classToApply === 'incorrect' && timeLeft < 5) {
+        onTimesUp();
       }
       
       selectedChoice.parentElement.classList.add(classToApply)
@@ -192,11 +194,10 @@ let questions = [
       setTimeout(() => {
         selectedChoice.parentElement.classList.remove(classToApply)
         getNewQuestion()
-
       }, 1000)
-    })
   })
 
+  // Advance the numbers displayed on the scoreboard as needed
   incrementScore = num => {
     score +=num
     scoreText.innerText = score
@@ -279,6 +280,7 @@ function startTimer() {
   }, 1000);
 }
 
+// Allow time to be displayed as minutes:seconds
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
@@ -290,6 +292,7 @@ function formatTime(time) {
   return `${minutes}:${seconds}`;
 }
 
+// Change timer color
 function setRemainingPathColor(timeLeft) {
   const { alert, warning, info } = COLOR_CODES;
   if (timeLeft <= alert.threshold) {
@@ -321,5 +324,5 @@ function setCircleDasharray() {
   document
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
-}
-
+  }
+});
