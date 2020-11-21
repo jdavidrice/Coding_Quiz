@@ -29,7 +29,9 @@
 // 4. Function that advances to next question after the prior one is submitted.
 // 5. Function that tracks and displays score throughout the game.
 // 6. Event listener that knows when the last question is reached, or the timer reaches zero, and displays the final score with an option for the player to enter in their initials. 
-//                                                                  
+//
+// First attempt at quiz, using prompts
+//
 // // DOM Elements
 // let startQuiz = document.querySelector("#startQuiz");
 // let score = 0;
@@ -68,7 +70,7 @@ const question = document.querySelector('#question')
 const choices = Array.from(document.querySelectorAll('.choice-text'))
 const progressText = document.querySelector('#progressText')
 const scoreText = document.querySelector('#score')
-const progressBarFull = document.querySelector('#progressBarFull')
+//const progressBarFull = document.querySelector('#progressBarFull')
 
 // Variables
 let currentQuestion = {}
@@ -121,9 +123,11 @@ let questions = [
     },
   ]
 
+  // Ten points earned per each correct question, and there are five questions
   const SCORE_POINTS = 10
   const MAX_QUESTIONS = 5
 
+  // Starting conditions of the quiz
   startGame = () => {
     questionCounter = 0
     score = 0
@@ -137,13 +141,12 @@ let questions = [
       // Save score to local storage
       localStorage.setItem('mostRecentScore', score)
       // Send to end.html when game is over
-      return window.location.assign('end.html')
+      return window.location.assign('/end.html')
     }
 
-    // Adjust Progress Bar
+    // Show progress throughout quiz
     questionCounter++
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
-    //progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
 
     // Randomize question order
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
@@ -158,9 +161,10 @@ let questions = [
       choice.innerText = currentQuestion['choice' + number]
     })
 
-    // Adjusts the array as each question is used
+    // Adjusts the array as each question is used up
     availableQuestions.splice(questionsIndex, 1)
 
+    // Allow answers to be chosen once the quiz starts
     acceptingAnswers = true
   }
 
@@ -173,43 +177,49 @@ let questions = [
       const selectedChoice = e.target
       const selectedAnswer = selectedChoice.dataset['number']
 
-      // Apply style to button to indicate correct or incorrect
+      // Apply style to button to indicate correct or incorrect (ternary operator)
       let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
 
       // Each correct answer gives you 10 points
       if(classToApply === 'correct') {
         incrementScore(SCORE_POINTS)
       }
-
+      //**************************************************************************************************************************************************************
       // Each incorrect answer takes 5 seconds off the timer, unless the time remaining is less than 5 seconds, at which time the game ends
-      if(classToApply === 'incorrect' && timeLeft > 5) {
-        timePassed = timePassed += 5;
-      } else if (classToApply === 'incorrect' && timeLeft < 5) {
-        onTimesUp();
+      // if(classToApply === 'incorrect' && timeLeft > 5) {
+      //   timePassed = timePassed += 5;
+      // } else if (classToApply === 'incorrect' && timeLeft <= 5) {
+      //   onTimesUp();
+      // }
+
+      if(classToApply === 'incorrect') {
+        timeLeft = timeLeft -= 5;
       }
       
       selectedChoice.parentElement.classList.add(classToApply)
 
-      // Pause to show us if we got the answer correct or incorrect
+      // Pause to show us if we got the answer correct or incorrect before advancing to the next question
       setTimeout(() => {
         selectedChoice.parentElement.classList.remove(classToApply)
         getNewQuestion()
       }, 1000)
   })
 
-  // Advance the numbers displayed on the scoreboard as needed
+  // Advance the numbers displayed on the scoreboard as points are earned
   incrementScore = num => {
     score +=num
     scoreText.innerText = score
   }
 
+  // Call the function that starts the quiz
   startGame()
 
 
 // Timer
+// Credit: Mateusz Rybczonec - CSS-Tricks.com
+// https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
 //
-// Credit: Mateusz Rybczonec
-
+// Set the points where the timer's progress ring changes color
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
@@ -228,12 +238,14 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 60;
+// Set the starting conditions of the timer
+const TIME_LIMIT = 30;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
-let timerInterval = null;
+let timerInterval = null; //******************************************************************************************************************/
 let remainingPathColor = COLOR_CODES.info.color;
 
+// HTML for the timer
 document.getElementById("app").innerHTML = `
 <div class="base-timer">
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -258,12 +270,17 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
+// Call the function that starts the timer
 startTimer();
 
+// Reset the timer AND END THE GAME when the set time is elapsed*************************************************************************************************
 function onTimesUp() {
   clearInterval(timerInterval);
+  acceptingAnswers = false;
+  return window.location.assign('/end.html')
 }
 
+// When the timer starts, it counts down in one second increments, and displays the difference between the starting time and the time passed (timeLeft)
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
