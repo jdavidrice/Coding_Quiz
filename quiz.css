@@ -41,7 +41,7 @@ body {
 }
 
 .correct {
-  background: green;
+  background: rgb(65, 185, 131);
 }
 
 .incorrect {
@@ -52,7 +52,7 @@ body {
 
 #hud {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .hud-prefix {

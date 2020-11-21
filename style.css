@@ -4,13 +4,29 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 100%;
+  font-size: 62.5%;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 body {
   background-color: rgb(71, 71, 71);
   color: whitesmoke;
+}
+
+p {
+  font-size: 2rem;
+  margin: auto;
+}
+
+h1 {
+  font-size: 5.2rem;
+  color: whitesmoke;
+  margin-bottom: 5rem;
+}
+
+h2 {
+  font-size: 4.2rem;
+  margin-bottom: 4rem;
 }
 
 .container {
@@ -48,6 +64,7 @@ body {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(6, 6, 75, 0.5);
   transition: transform 100ms;
   transform: scale(1.03);
+  color: rgb(65, 185, 131)
 }
 
 .hidden {
@@ -58,7 +75,6 @@ body {
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
-
 }
 
 .fa-rocket {
@@ -71,7 +87,7 @@ body {
   margin-right: 1rem;
 }
 
-/* End page Css */
+/* End page CSS */
 
 .end-form-container {
   width: 100%;
@@ -112,8 +128,17 @@ input::placeholder {
   border: none;
 }
 
+.fa-save {
+  margin-left: 1rem;
+  font-size: 2.5rem;
+}
+
+.fa-redo {
+  margin-left: 1rem;
+  font-size: 2.5rem;
+}
+
 .fa-home {
   margin-left: 1rem;
-  font-size: 2rem;
-  color: black;
+  font-size: 2.5rem;
 }

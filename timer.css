@@ -5,6 +5,10 @@ body {
   place-items: center;
 }
 
+#app {
+  size: 75%;
+}
+
 .base-timer {
   position: relative;
   width: 300px;
