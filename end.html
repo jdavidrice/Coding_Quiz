@@ -18,18 +18,19 @@
 </head>
 <body>
   <div class="container">
-    <div id="end" class="flex-center flex-column">
+    <div id="end" class="item">
       <div class="flex-center" class="item">
         <h1>Score:</h1><h1 id="finalScore">0</h1>
       </div>
-        <form class="end-form-container item">
-          <h2 class="item" id="end-text">Enter your initials to save your score!</h2>
-          <input class="item" type="text" name="name" id="username" placeholder="Enter your name">
-          <button class="btn" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>Save</button>
-        
-      <a href="/quiz.html" class="btn">Play Again</a>
-      <a href="/" class="btn">Go Home<i class="fas fa-home"></i></a>
-    </form>
+        <div class="item">
+          <h2 id="end-text">Enter your initials to save your score!</h2>
+          <div class="item">
+            <input type="text" name="name" id="username" placeholder="Enter your initials">
+          </div>
+          <div class="btn" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>Save</div>
+          <a href="quiz.html" class="btn">Play Again</a>
+          <a href="index.html" class="btn">Go Home<i class="fas fa-home"></i></a>
+        </div
     </div>
   </div>
 <script src="end.js"></script>
