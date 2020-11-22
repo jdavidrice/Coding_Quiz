@@ -140,7 +140,7 @@ let questions = [
       // Save score to local storage
       localStorage.setItem('mostRecentScore', score)
       // Send to end.html when game is over
-      return window.location.assign('/end.html')
+      return window.location.assign('end.html')
     }
 
     // Show progress throughout quiz
@@ -185,6 +185,7 @@ let questions = [
       }
       
       // Each incorrect answer takes 5 seconds off the timer, unless the time remaining is less than 5 seconds, at which time the game ends
+      
       // if(classToApply === 'incorrect' && timeLeft > 5) {
       //   timePassed = timePassed += 5;
       // } else if (classToApply === 'incorrect' && timeLeft <= 5) {
@@ -277,7 +278,7 @@ function onTimesUp() {
   clearInterval(timerInterval);
   localStorage.setItem('mostRecentScore', score);
   acceptingAnswers = false;
-  return window.location.assign('/end.html')
+  return window.location.assign('')
 }
 
 // When the timer starts, it counts down in one second increments, and displays the difference between the starting time and the time passed (timeLeft)
