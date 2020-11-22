@@ -14,7 +14,6 @@ h1#question {
   border-radius: 4px;
   background: blue;
   font-size: 3rem;
-  min-width: 80rem;
 }
 
 .choice-container:hover {
