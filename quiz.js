@@ -192,7 +192,7 @@ let questions = [
       //   onTimesUp();
       // }
 
-      if(classToApply === 'incorrect') {
+      if(selectedAnswer != currentQuestion.answer) {
         timeLeft = timeLeft -= 5;
       }
       
@@ -278,7 +278,7 @@ function onTimesUp() {
   clearInterval(timerInterval);
   localStorage.setItem('mostRecentScore', score);
   acceptingAnswers = false;
-  return window.location.assign('')
+  return window.location.assign('end.html')
 }
 
 // When the timer starts, it counts down in one second increments, and displays the difference between the starting time and the time passed (timeLeft)
