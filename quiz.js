@@ -70,7 +70,6 @@ const question = document.querySelector('#question')
 const choices = Array.from(document.querySelectorAll('.choice-text'))
 const progressText = document.querySelector('#progressText')
 const scoreText = document.querySelector('#score')
-//const progressBarFull = document.querySelector('#progressBarFull')
 
 // Variables
 let currentQuestion = {}
@@ -135,7 +134,7 @@ let questions = [
     getNewQuestion()
   }
 
-  // Set Score
+  // Set Score *************************************************************************************************************
   getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
       // Save score to local storage
@@ -273,9 +272,10 @@ document.getElementById("app").innerHTML = `
 // Call the function that starts the timer
 startTimer();
 
-// Reset the timer AND END THE GAME when the set time is elapsed*************************************************************************************************
+// Reset the timer AND END THE GAME when the set time is elapsed
 function onTimesUp() {
   clearInterval(timerInterval);
+  localStorage.setItem('mostRecentScore', score);
   acceptingAnswers = false;
   return window.location.assign('/end.html')
 }
