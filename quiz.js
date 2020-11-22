@@ -134,7 +134,7 @@ let questions = [
     getNewQuestion()
   }
 
-  // Set Score *************************************************************************************************************
+  // Set Score
   getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
       // Save score to local storage
@@ -183,7 +183,7 @@ let questions = [
       if(classToApply === 'correct') {
         incrementScore(SCORE_POINTS)
       }
-      //**************************************************************************************************************************************************************
+      
       // Each incorrect answer takes 5 seconds off the timer, unless the time remaining is less than 5 seconds, at which time the game ends
       // if(classToApply === 'incorrect' && timeLeft > 5) {
       //   timePassed = timePassed += 5;
@@ -241,7 +241,7 @@ const COLOR_CODES = {
 const TIME_LIMIT = 30;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
-let timerInterval = null; //******************************************************************************************************************/
+let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
 
 // HTML for the timer

@@ -4,7 +4,7 @@
 
 This website is a timed coding quiz with multiple-choice questions. It runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript. 
 
-[Link to published website]()
+[Link to published website](https://jdavidrice.github.io/Coding_Quiz/)
 
 ## Table of Contents
 
@@ -21,7 +21,7 @@ This website is a timed coding quiz with multiple-choice questions. It runs in t
 
 ## Photo
 
-![Screenshot of completed website.]()
+![Screenshot of completed website.](coding_quiz.png)
 
 * [Return to Top](#Coding-Quiz)
 
@@ -33,12 +33,15 @@ There is nothing to install to access the information on this website.
 
 ## Usage 
 
+Use this short coding quiz to test your knowledge of HTML, CSS, and JavaScript.
 
 * [Return to Top](#Coding-Quiz)
 
 ## Credits
 
-No credits
+Credit to Brian Design for his video [How to Make a Quiz App...](https://www.youtube.com/watch?v=f4fB9Xg2JEY&t=2s)
+
+Credit to Mateusz Rybczonek for his article [How to Create an Animated Countdown Timer...](https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/)
 
 * [Return to Top](#Coding-Quiz)
 
