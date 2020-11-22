@@ -145,7 +145,7 @@ let questions = [
 
     // Show progress throughout quiz
     questionCounter++
-    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
+    progressText.innerText = `Question\n${questionCounter} of ${MAX_QUESTIONS}`
 
     // Randomize question order
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)

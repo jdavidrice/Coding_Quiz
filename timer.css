@@ -5,8 +5,9 @@ body {
   place-items: center;
 }
 
-#app {
-  size: 75%;
+#resize-timer {
+  width: 300px;
+  height: 300px;
 }
 
 .base-timer {
