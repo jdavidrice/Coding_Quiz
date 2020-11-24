@@ -4,9 +4,7 @@
 
 This website is a timed coding quiz with multiple-choice questions. It runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript. 
 
-This website does not fulfill all of the acceptance criteria for this assignment. It does not address:
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
+This website fulfills all of the acceptance criteria for this assignment. 
 
 [Link to published website](https://jdavidrice.github.io/Coding_Quiz/)
 

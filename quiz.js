@@ -78,6 +78,32 @@ let score = 0
 let questionCounter = 0
 let availableQuestions = []
 
+// Set the points where the timer's progress ring changes color
+const FULL_DASH_ARRAY = 283;
+const WARNING_THRESHOLD = 10;
+const ALERT_THRESHOLD = 5;
+
+const COLOR_CODES = {
+  info: {
+    color: "green"
+  },
+  warning: {
+    color: "orange",
+    threshold: WARNING_THRESHOLD
+  },
+  alert: {
+    color: "red",
+    threshold: ALERT_THRESHOLD
+  }
+};
+
+// Set the starting conditions of the timer
+const TIME_LIMIT = 30;
+let timePassed = 0;
+let timeLeft = TIME_LIMIT;
+let timerInterval = null;
+let remainingPathColor = COLOR_CODES.info.color;
+
 // The array of questions
 let questions = [
     { 
@@ -186,14 +212,10 @@ let questions = [
       
       // Each incorrect answer takes 5 seconds off the timer, unless the time remaining is less than 5 seconds, at which time the game ends
       
-      // if(classToApply === 'incorrect' && timeLeft > 5) {
-      //   timePassed = timePassed += 5;
-      // } else if (classToApply === 'incorrect' && timeLeft <= 5) {
-      //   onTimesUp();
-      // }
-
-      if(selectedAnswer != currentQuestion.answer) {
-        timeLeft = timeLeft -= 5;
+      if(classToApply === 'incorrect' && timeLeft > 5) {
+        timePassed += 5;
+      } else if (classToApply === 'incorrect' && timeLeft <= 5) {
+        onTimesUp();
       }
       
       selectedChoice.parentElement.classList.add(classToApply)
@@ -211,6 +233,8 @@ let questions = [
     scoreText.innerText = score
   }
 
+});
+
   // Call the function that starts the quiz
   startGame()
 
@@ -219,32 +243,6 @@ let questions = [
 // Credit: Mateusz Rybczonec - CSS-Tricks.com
 // https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
 //
-// Set the points where the timer's progress ring changes color
-const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
-
-const COLOR_CODES = {
-  info: {
-    color: "green"
-  },
-  warning: {
-    color: "orange",
-    threshold: WARNING_THRESHOLD
-  },
-  alert: {
-    color: "red",
-    threshold: ALERT_THRESHOLD
-  }
-};
-
-// Set the starting conditions of the timer
-const TIME_LIMIT = 30;
-let timePassed = 0;
-let timeLeft = TIME_LIMIT;
-let timerInterval = null;
-let remainingPathColor = COLOR_CODES.info.color;
-
 // HTML for the timer
 document.getElementById("app").innerHTML = `
 <div class="base-timer">
@@ -342,5 +340,5 @@ function setCircleDasharray() {
   document
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
-  }
-});
+}
+
