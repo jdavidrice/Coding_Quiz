@@ -40,6 +40,10 @@ body {
   stroke: currentColor;
 }
 
+#base-timer-path-remaining {
+  width: 20px;
+}
+
 .base-timer__path-remaining.green {
   color: rgb(65, 184, 131);
 }

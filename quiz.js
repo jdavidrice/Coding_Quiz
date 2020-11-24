@@ -66,6 +66,7 @@
 // });
 
 // DOM Elements
+let timeLeft = 30;
 const question = document.querySelector('#question')
 const choices = Array.from(document.querySelectorAll('.choice-text'))
 const progressText = document.querySelector('#progressText')
@@ -187,13 +188,14 @@ let questions = [
       // Each incorrect answer takes 5 seconds off the timer, unless the time remaining is less than 5 seconds, at which time the game ends
       
       // if(classToApply === 'incorrect' && timeLeft > 5) {
-      //   timePassed = timePassed += 5;
+      //   timeLeft -= 5;
       // } else if (classToApply === 'incorrect' && timeLeft <= 5) {
       //   onTimesUp();
       // }
 
       if(selectedAnswer != currentQuestion.answer) {
-        timeLeft = timeLeft -= 5;
+        timeLeft -= 5;
+        console.log("timeLeft", timeLeft);
       }
       
       selectedChoice.parentElement.classList.add(classToApply)
@@ -210,7 +212,7 @@ let questions = [
     score +=num
     scoreText.innerText = score
   }
-
+});
   // Call the function that starts the quiz
   startGame()
 
@@ -241,7 +243,7 @@ const COLOR_CODES = {
 // Set the starting conditions of the timer
 const TIME_LIMIT = 30;
 let timePassed = 0;
-let timeLeft = TIME_LIMIT;
+
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
 
@@ -271,7 +273,7 @@ document.getElementById("app").innerHTML = `
 `;
 
 // Call the function that starts the timer
-startTimer();
+
 
 // Reset the timer AND END THE GAME when the set time is elapsed
 function onTimesUp() {
@@ -284,8 +286,8 @@ function onTimesUp() {
 // When the timer starts, it counts down in one second increments, and displays the difference between the starting time and the time passed (timeLeft)
 function startTimer() {
   timerInterval = setInterval(() => {
-    timePassed = timePassed += 1;
-    timeLeft = TIME_LIMIT - timePassed;
+    timeLeft--
+    console.log("timeLeft", timeLeft);
     document.getElementById("base-timer-label").innerHTML = formatTime(
       timeLeft
     );
@@ -343,4 +345,6 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
   }
-});
+
+
+startTimer();
